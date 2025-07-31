@@ -26,7 +26,7 @@
 
 
 
-    //component 
+    //component 2
     function ChatMessage({ message, sender }) {
 
       //Apply destructuring 
@@ -57,35 +57,63 @@
       );
     }
 
-    
 
-    function App(){
+
+    //component 3 
+    function MessageChat() {
+
+
+      //create array of object 
+      const ChatMessages = [{
+        message : 'Hello Chatbot',
+        sender : 'human',
+        id : '1'
+      },{
+        message : 'Hello How are you ',
+        sender : 'robot',
+        id : '2'
+      },{
+        message : 'What is the capital city of Bangladesh',
+        sender  : 'human',
+        id : '3'
+      },{
+        message : 'Dhaka',
+        sender  : 'robot',
+        id : '4'
+      }]
+
       return (
-        <>
-        <ChatInput />
-        <ChatMessage 
-         message="Hello Chatbot"
-         sender="human" 
-        />
-        <ChatMessage 
-        message="Hello How are you"
-          sender="robot" 
-          />
-        <ChatMessage 
-        message="What is the capital city of Bangladesh" 
-        sender="human" 
-        />
-        <ChatMessage 
-        message="Dhaka" 
-        sender="robot" 
-        />
+      <>
+          {ChatMessages.map((ChatMessageValue) => {
+              return (
+                < ChatMessage 
+                  message={ChatMessageValue.message}
+                  sender = {ChatMessageValue.sender}
+                  key  = {ChatMessageValue.id}
+                />
+              );
+           })}
       </>
       );
+
+    }
+
+
+
+    function App(){ 
+
+      return (
+        <>
+          <ChatInput />
+          <MessageChat />
+        </>
+      );
+
     }
 
 
     const container = document.querySelector('.js-container');
-    ReactDOM.createRoot(container).render(<App/>);
+    ReactDOM.createRoot(container).render(<App />);
   </script>
 </body>
 
