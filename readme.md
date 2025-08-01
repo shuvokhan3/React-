@@ -12,3 +12,8 @@ chaptar - 1 :
 • Code Organization & Best Practices: Applying guidelines for formatting code, such as adding brackets around multi-line HTML, using indents, and putting attributes on separate lines for readability and maintainability.
 
 
+Chapter - 2 : 
+
+
+
+
