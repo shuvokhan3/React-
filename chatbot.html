@@ -1,125 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>chatbot</title>
+  <title>Chatbot</title>
 </head>
 <body>
   <div class="js-container"></div>
+
   <script src="https://unpkg.com/supersimpledev/react.js"></script>
   <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
-
   <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
   <script type="text/babel">
 
-    //component 1 
+    // Chat input component
     function ChatInput() {
       return (
-        <>
+        <div>
           <input placeholder="Send message to chatbot" size="30" />
           <button>Send</button>
-        </>
-      );
-    }
-
-    //component 2
-    function ChatMessage({ message, sender }) {
-
-      //Apply destructuring 
-      // const message = props.message;
-      // const sender = props.sender;
-
-      //const {message,sender} = props
-
-      // if(sender == 'robot'){
-      //   return (
-      //     <div>
-      //       <img src='robot.jpeg' width="50" />
-      //       {message}
-      //     </div>
-      //   );
-      // }
-
-      return (
-        <div>
-          {sender === 'robot' && (
-             <img src='robot.jpeg' width="50" />
-            )}
-          {message}
-          {sender === 'human' && (
-            <img src="user.jpeg" width="50" />
-          )}
         </div>
       );
     }
 
+    // Individual chat message component
+    function ChatMessage({ message, sender }) {
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', margin: '5px 0' }}>
+          {sender === 'robot' && <img src="robot.jpeg" width="50" alt="robot" />}
+          <span style={{ margin: '0 10px' }}>{message}</span>
+          {sender === 'human' && <img src="user.jpeg" width="50" alt="user" />}
+        </div>
+      );
+    }
 
-    //component 3 
-    function MessageChat() {
+    // Chat messages list component
+    function ChatMessages() {
+      const [chatMessages, setChatMessages] = React.useState([
+        { id: '1', message: 'Hello Chatbot', sender: 'human' },
+        { id: '2', message: 'Hello, how are you?', sender: 'robot' },
+        { id: '3', message: 'What is the capital city of Bangladesh?', sender: 'human' },
+        { id: '4', message: 'Dhaka', sender: 'robot' },
+      ]);
 
-      //Concert it into state
-      const array = React.useState([{
-        message : 'Hello Chatbot',
-        sender : 'human',
-        id : '1'
-      },{
-        message : 'Hello How are you ',
-        sender : 'robot',
-        id : '2'
-      },{
-        message : 'What is the capital city of Bangladesh',
-        sender  : 'human',
-        id : '3'
-      },{
-        message : 'Dhaka',
-        sender  : 'robot',
-        id : '4'
-      }]);
-
-      const chatMessages = array[0];
-      const setChatMessages = array[1];
-
-      function sendMessage(){
+      // Add new test message
+      function sendMessage() {
         setChatMessages([
-          ...ChatMessages,
-          {
-            message: 'test',
-            sender: 'user',
-            id: crypto.randomUUID()
-          }
+          ...chatMessages,
+          { id: crypto.randomUUID(), message: 'Test message', sender: 'human' }
         ]);
       }
 
-      
-
-      return (
-      <>
-      <button onClick={sendMessage}>Send Message</button>
-          {ChatMessages.map((ChatMessageValue) => {
-              return (
-                < ChatMessage 
-                  message={ChatMessageValue.message}
-                  sender = {ChatMessageValue.sender}
-                  key  = {ChatMessageValue.id}
-                />
-              );
-           })}
-      </>
-      );
-
-    }
-
-    function App(){ 
       return (
         <>
-          <ChatInput />
-          <MessageChat />
+          <button onClick={sendMessage}>Send Test Message</button>
+          {chatMessages.map((msg) => (
+            <ChatMessage
+              key={msg.id}
+              message={msg.message}
+              sender={msg.sender}
+            />
+          ))}
         </>
       );
     }
 
+    // Main App component
+    function App() {
+      return (
+        <>
+          <ChatInput />
+          <ChatMessages />
+        </>
+      );
+    }
+
+    // Render App
     const container = document.querySelector('.js-container');
     ReactDOM.createRoot(container).render(<App />);
   </script>
 </body>
-
 </html>
