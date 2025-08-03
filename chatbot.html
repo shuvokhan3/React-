@@ -14,10 +14,32 @@
 
     // Chat input component
     function ChatInput() {
+      //save data using state
+      const [inputText, setInputText] = React.useState('');
+
+      function saveInputText(event){
+        const inputVal = event.target.value;
+        setInputText(inputVal);
+        
+      }
+
+      function sendMessage(){
+        setChatMessages([
+          ...chatMessages,
+          { id: crypto.randomUUID(),
+             message: 'Test message', 
+             sender: 'human' 
+            }
+        ]);
+      }
+
       return (
         <div>
-          <input placeholder="Send message to chatbot" size="30" />
-          <button>Send</button>
+          <input placeholder="Send message to chatbot" 
+          size="30" 
+          onChange={saveInputText}
+          />
+          <button onClick={sendMessage}>Send</button>
         </div>
       );
     }
@@ -35,24 +57,9 @@
 
     // Chat messages list component
     function ChatMessages() {
-      const [chatMessages, setChatMessages] = React.useState([
-        { id: '1', message: 'Hello Chatbot', sender: 'human' },
-        { id: '2', message: 'Hello, how are you?', sender: 'robot' },
-        { id: '3', message: 'What is the capital city of Bangladesh?', sender: 'human' },
-        { id: '4', message: 'Dhaka', sender: 'robot' },
-      ]);
-
-      // Add new test message
-      function sendMessage() {
-        setChatMessages([
-          ...chatMessages,
-          { id: crypto.randomUUID(), message: 'Test message', sender: 'human' }
-        ]);
-      }
-
       return (
         <>
-          <button onClick={sendMessage}>Send Test Message</button>
+     
           {chatMessages.map((msg) => (
             <ChatMessage
               key={msg.id}
@@ -66,6 +73,14 @@
 
     // Main App component
     function App() {
+
+        const [chatMessages, setChatMessages] = React.useState([
+        { id: '1', message: 'Hello Chatbot', sender: 'human' },
+        { id: '2', message: 'Hello, how are you?', sender: 'robot' },
+        { id: '3', message: 'What is the capital city of Bangladesh?', sender: 'human' },
+        { id: '4', message: 'Dhaka', sender: 'robot' },
+        
+      ]);
       return (
         <>
           <ChatInput />
