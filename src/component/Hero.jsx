@@ -1,22 +1,18 @@
-import { Fragment } from "react";
-
-//Hero component 
 const hero = () => {
+    
+    const name = ['rahim','karim','shuvo','khan'];
+
     return (
-        //jsx
-        //Opening and closing tag must need in jsx
         <div>
-        
-         
-            <button onClick={()=>{alert("Hello")}}>Click</button>
+            <ol>
+                {
+                    name.map((item)=>{
 
-           
-            <p style={
-                {color: 'red'}
-            }>text</p>
+                        return <li>{item}</li>
 
-           
-            <br/>
+                    })
+                }
+            </ol>
         </div>
     );
 };
