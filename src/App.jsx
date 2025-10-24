@@ -1,11 +1,8 @@
-import Header from "./component/header";
-import Footer from "./component/footer";
-import Hero from "./component/hero"
-import Ifelse from './component/ifelse'
+import Hero from "./component/Hero"
 const App = () => {
   return (
     <div>
-      <Ifelse/>
+      <Hero />
     </div>
   );
 };
