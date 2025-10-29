@@ -1,18 +1,9 @@
 const hero = () => {
-    
-    const name = ['rahim','karim','shuvo','khan'];
-
+    const status = true;
     return (
         <div>
-            <ol>
-                {
-                    name.map((item)=>{
-
-                        return <li>{item}</li>
-
-                    })
-                }
-            </ol>
+            <h1>Login Status</h1>
+            {status && <button>Logout</button>}
         </div>
     );
 };
