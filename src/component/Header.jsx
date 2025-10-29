@@ -1,12 +1,16 @@
-const header = () => {
+const Header = () => {
+    const loginStatus = "deactive";
     return (
         <div>
-            <div>
-                <p>This is header part</p>
-            </div>
-        
+            {(()=>{
+                if(loginStatus === "active"){
+                    return <button>Logout</button>
+                }else{
+                    return <button>Login</button>
+                }
+            })()}
         </div>
     );
 };
 
-export default header;
+export default Header;
