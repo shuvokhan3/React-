@@ -1,11 +1,11 @@
-const hero = () => {
-    const status = true;
+const Hero = (props) => {
+    
     return (
         <div>
-            <h1>Login Status</h1>
-            {status && <button>Logout</button>}
+            <h1>{props.title}</h1>
+            <p>{props.des}</p>
         </div>
     );
-};
+};  
 
-export default hero;
+export default Hero;
