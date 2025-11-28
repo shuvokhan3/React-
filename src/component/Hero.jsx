@@ -13,6 +13,8 @@ const Hero = (props) => {
                 <li>{props.mathRes['sub']}</li>
                 <li>{props.mathRes['mark']}</li>
             </ul>
+             //catch the function that create on the parent component 
+            <button onClick={props.sendFuntion} >Click Me</button>
         </div>
     );
 };  
