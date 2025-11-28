@@ -1,19 +1,24 @@
-const LoginStatusButton=(status)=>{
-    if(status){
-      return<button>Login</button>
-    }else{
-      return <button>Logout</button>
-    }
-}
+import Hero from "./component/Hero";
 
 
 const App = () => {
 
+  const item = {
+    name : "Shuvo",
+    age : 25
+  }
+
+  const res = {
+    total : 100,
+    sub : "math",
+    mark : 89
+  }
+
   return(
     <div>
-      <h1>Login Status</h1>
-      //call the function
-      {LoginStatusButton(true)}
+      <Hero mess="User Detail's" indivisualMess = "Math Result Value" items={item} mathRes={res}/>
+
+
     </div>
   )
 };
