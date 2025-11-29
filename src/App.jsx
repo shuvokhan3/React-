@@ -1,4 +1,5 @@
 import Hero from "./component/Hero";
+import Footer from "./component/Footer";
 
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
     <div>
       <Hero mess="User Detail's" indivisualMess = "Math Result Value" items={item} mathRes={res} sendFuntion={btnClick}/>{/*Send o*/}
 
+
+      <Footer/>
     </div>
   )
 };

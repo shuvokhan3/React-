@@ -1,11 +1,19 @@
-const footer = () => {
+const Footer = () => {
+
+    const FormDataSubmit=(event)=>{
+        event.preventDefault();
+
+    }
+
     return (
         <div>
-            <div>
-                <p>This is footer part</p>
-            </div> 
+            <form onSubmit={FormDataSubmit}>
+                <input placeholder="Enter Name"></input>
+
+                <button>Click</button>
+            </form>
         </div>
     );
 };
 
-export default footer;
+export default Footer;
