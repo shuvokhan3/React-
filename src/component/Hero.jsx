@@ -1,5 +1,14 @@
 const Hero = (props) => {
-    
+
+
+    function popupVal(){
+        alert("Value is 300");
+    }
+
+    {/*Arow function */}
+    const value=()=>{
+        alert("Hello");
+    }
     return (
         <div>
             <h1>{props.mess}</h1>
@@ -13,8 +22,12 @@ const Hero = (props) => {
                 <li>{props.mathRes['sub']}</li>
                 <li>{props.mathRes['mark']}</li>
             </ul>
-             //catch the function that create on the parent component 
+       
             <button onClick={props.sendFuntion} >Click Me</button>
+
+            <button onClick={popupVal}>Click To Popup</button>
+
+            <button onClick={value}>Click Me</button>
         </div>
     );
 };  

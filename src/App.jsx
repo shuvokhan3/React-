@@ -21,8 +21,7 @@ const App = () => {
 
   return(
     <div>
-      <Hero mess="User Detail's" indivisualMess = "Math Result Value" items={item} mathRes={res} sendFuntion={btnClick}/>//send on child component
-
+      <Hero mess="User Detail's" indivisualMess = "Math Result Value" items={item} mathRes={res} sendFuntion={btnClick}/>{/*Send o*/}
 
     </div>
   )
